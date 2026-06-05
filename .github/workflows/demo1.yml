@@ -1,8 +1,10 @@
-name: hello-world
-on: push
+name: Cron Demo
+on:
+  schedule:
+    - cron: '47 3 * * 5'
 jobs:
-  my-job:
-    runs-on: ubuntu-22.04
+  greeting:
+    runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hellow sunless!"
+      - name: Hello on Fridays
+        run: echo "Lost From Light"
