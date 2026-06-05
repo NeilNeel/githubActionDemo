@@ -1,0 +1,20 @@
+name: Multi Events Demo
+on:
+  push:
+    branches: ['main','dev']
+  pull_request:
+    branches: ['main']
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    steps:
+      - name: Checkout code
+        run: echo "The code has been checked out."
+  
+  testing:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Run tests
+        run: echo "Running tests..."

@@ -1,0 +1,10 @@
+name: Webhook Demo
+on:
+  repository_dispatch:
+    types: [hello-webhook]
+jobs:
+  print-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print payload
+        run: echo "The payload is ${{ github.event.client_payload.msg }}"
