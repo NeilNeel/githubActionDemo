@@ -1,5 +1,5 @@
 name: Workflow Commands Demo
-on: workflow_dispatch
+on: push
 jobs:
   workflow-cmd-demo:
     runs-on: ubuntu-latest
@@ -10,3 +10,11 @@ jobs:
           echo "Msg 1"
           echo "Msg 2"
           echo "::endgroup::"
+      
+      - name: Step 1
+        run: echo "MY_NAME=sunless" >> $GITHUB_ENV
+
+      - name: Step 2
+        run: echo "The value of MY_NAME is $MY_NAME"
+      
+
