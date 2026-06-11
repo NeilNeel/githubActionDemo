@@ -1,0 +1,26 @@
+name: Dependent Workflows
+on:
+  workflow_dispatch: 
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      app_version: ${{ steps.set_ver.outputs.version }}
+    steps:
+      - name: Generate version
+        id: set_ver
+        run: echo "version=1.0.${{ github.run_number }}" >> $GITHUB_OUTPUT
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build
+        run: echo "Building the version ${{ needs.prepare.outputs.app_version }}"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: echo "Deploying version ${{ needs.prepare.outputs.app_version }}"
