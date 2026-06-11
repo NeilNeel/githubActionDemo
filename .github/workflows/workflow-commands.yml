@@ -15,6 +15,12 @@ jobs:
         run: echo "MY_NAME=sunless" >> $GITHUB_ENV
 
       - name: Step 2
-        run: echo "The value of MY_NAME is $MY_NAME"
+        id: step-2
+        run: |
+          echo "The value of MY_NAME is $MY_NAME"
+          echo "result=output_value" >> $GITHUB_OUTPUT
+
+      - name: Use output
+        run: echo "Output is ${{steps.step-2.outputs.result}}"
       
 
