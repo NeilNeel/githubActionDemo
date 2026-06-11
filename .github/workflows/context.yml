@@ -1,0 +1,14 @@
+name: Context Demo
+on: push
+jobs:
+  my-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Context Demo
+        env:
+          MY_ACTION: ${{ github.event_name }}
+        run: |
+          echo "This workflow is triggered by $MY_ACTION"
+          echo "The repo name is ${{ github.repository }}"
+
+      
