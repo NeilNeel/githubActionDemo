@@ -8,3 +8,4 @@ jobs:
     steps:
       - name: Print payload
         run: echo "The payload is ${{ github.event.client_payload.payload }}"
+
