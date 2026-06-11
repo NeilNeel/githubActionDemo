@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print payload
-        run: echo "The payload is ${{ github.event.client_payload.msg }}"
+        run: echo "The payload is ${{ github.event.client_payload.payload }}"
